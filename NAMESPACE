@@ -2,6 +2,7 @@ exportPattern("^[[:alpha:]]+")
 importFrom("grDevices", "gray.colors", "hcl.colors")
      importFrom("graphics", "abline", "boxplot", "contour", "hist", "image",
                 "legend", "lines", "par", "plot.new", "points", "segments",
-                "text")
+                "text","title")
      importFrom("stats", "approx", "density", "ecdf", "qqline", "qqnorm",
-                "quantile", "stepfun")
+                "quantile", "stepfun","na.exclude")
+

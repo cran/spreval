@@ -8,25 +8,32 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-plotss(cdata,sploc,con=TRUE, xlab=NULL,ylab=NULL,title=NULL,labelpoints=TRUE,
-spklab=NULL,imcol=FALSE,edastat=FALSE)
+plotss(cdata,sploc,con=TRUE,xlab=NULL,ylab=NULL,xlim=NULL,
+ylim=NULL,main=NULL,labelpoints=TRUE,pos=1,spklab=NULL,
+pch=16,cex=0.8,edastat=FALSE,...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{cdata}{n x 3 matrix of catch can data; 1st column x, 2nd column y can locations, 3rd column catch depths}
   \item{sploc}{n x 2 matrix of sprinkler location data; 1st column xi, second column yi.  i=4 for 4 sprinklers with cans in-between.}
-  \item{con}{Logical; TRUE to overlay contour plot on densigram, default is TRUE}
-  \item{xlab}{label for x axis of plot,default is NULL (no xlab)}
-  \item{ylab}{label for y axis of plot, default is NULL (no ylab)}
-  \item{title}{main title for plot, default is NULL (no title)}
+  \item{con}{Logical; TRUE to overlay contour plot on densigram.}
+  \item{xlab}{label for x axis of plot.}
+  \item{ylab}{label for y axis of plot.}
+  \item{xlim}{bounds of x-axis.}
+  \item{ylim}{bounds of y-axis.}
+  \item{main}{main title for plot.}
   \item{labelpoints}{logical; plot amounts at can locations? Default is TRUE.}
-  \item{spklab}{character vector of labels for sprinklers.  Default is NULL (empty).}
-  \item{imcol}{logical; color densigram?  Default is FALSE for gray-scale.}
-  \item{edastat}{call eda.stat function for stats on catch depths? Default is FALSE.}
+  \item{pos}{if labelpoints=TRUE, position of point labels, see \code{\link[graphics]{text}}}
+  \item{spklab}{character vector of labels for sprinklers. Defaults to bold italic to distinguish
+  from can labels.}
+  \item{pch}{symbol type. See \code{\link[graphics]{par}}.}
+  \item{cex}{scaling factor for plotting points and point labels.See \code{\link[graphics]{par}}.}
+  \item{edastat}{Logical; call eda.stat function for stats on catch depths?}
+  \item{...}{further graphical parameters to pass to internal calls to \code{\link[graphics]{plot.default}}}
 %%     ~~Describe \code{x} here~~
 }
 
-\value{densigram (from \code{\link[interp]{interp}} with optional contour plot overlay) and optional summary catch can statistics.}
+\value{densigram (from \code{\link[interp]{interp}} with optional contour plot overlay) and optional summary catch can statistics. Returned object is par(usr) to obtain x,y user coordinates for scaling subsequent plotting of low level plot functions on plotted densigram.}
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -42,7 +49,7 @@ spklab=NULL,imcol=FALSE,edastat=FALSE)
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{\code{\link[interp]{interp}}
+\seealso{\code{\link[interp]{interp}}, \code{\link[graphics]{contour}}
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
@@ -58,6 +65,8 @@ depth<-c(0.3,0.32,0.26,0.26,0.16,0.32,0.14,0.41,
 0.14,0.27,0.38,0.34,0.29,0.32,0.45,0.25)
 cdata<-cbind(x,y,depth)
 plotss(cdata,sploc,xlab="ft",ylab="ft")
+#now grey scale colors, pass "col"
+plotss(cdata,sploc,xlab="ft",ylab="ft",col=grey.colors(16))
 }
 
 

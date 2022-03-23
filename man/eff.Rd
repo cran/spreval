@@ -28,17 +28,12 @@ by the total water applied when the target depth is set equal to the soil moistu
 \value{A named list with the following items:
 \item{appeff}{application efficiency based on target depth, decimal}
 \item{appadeq}{application adequacy based on target depth, decimal}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 
 \author{Garry Grabow \email{glgrabow@ncsu.edu}
 %%  ~~who you are~~
 }
-\note{If all catch can depths (and resultant density curve) are all below the target depth, the application efficiency is 100\%.  This assumes that the target depth is equal to the soil water deficit (or less). So deficit irrigation events are likely to be 100\% or near 100\% efficient.
+\note{If all catch can depths (and resultant density curve) are all below the target depth, the application efficiency is 100\%.  This assumes that the target depth is equal to the soil water deficit (or less). So deficit irrigation events are likely to be 100\% or nearly 100\% efficient.
 %%  ~~further notes~~
 }
 

@@ -12,7 +12,8 @@ DU(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{numeric array of catch can data.
+  \item{x}{numeric array of catch can data. Array may include missing (NA) data.
+NA values will be removed in function.
 %%     ~~Describe \code{x} here~~
 }
 }
@@ -28,7 +29,6 @@ Keller, J., and R. D. Bliesner. 2000. Sprinkler and Trickle Irrigation. Caldwell
 \author{Garry Grabow \email{glgrabow@ncsu.edu}
 %%  ~~who you are~~
 }
-
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{\code{\link{CU}},\code{\link{DU.lh}}

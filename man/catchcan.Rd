@@ -9,7 +9,7 @@
 }
 \usage{data("catchcan")
 }
-\format{A named list of 3 catch can data sets; lateral, traveler, and solid.set
+\format{A named list of 4 catch can data sets; lateral, traveler, solid.set and landscape.
     \describe{
     \item{\code{catchcan$lateral}}{6x7 matrix of catch can data, units are in./hr. Grid spacing of 10 ft x 10 ft}
     \item{\code{ln}}{a numeric vector of catch can data - nth can to left of lateral}
@@ -20,6 +20,8 @@
     \item{\code{depth}}{collected depth, in.}
 
     \item{\code{catchcan$solid.set}}{4x4 matrix of catch can data, units are in. Can grid spacing of 20 ft x 20 ft inside of 4 operating sprinklers on 80x80 ft sprinkler x lateral spacing.}
+    \item{\code{catchcan$landscape}}{9X7 matrix of catch can data, units are in ml.  Can grid spacing of 9 X 9 ft.}
+
      }
      }
 
@@ -50,16 +52,16 @@ data(catchcan)
 use.data<-catchcan$lateral #matrix can be viewed as plan view of catch data
 #x,y matrix 10 ft x 10 ft catch can spacing
 x<-seq(-35,25,10) # x=0 is lateral position
-y<-seq(5,55,10)
+y<-seq(55,5,-10) #plan view top to bottom
 grd<-list(x,y) # prepare list for make.surface function [fields]
 grid<-make.surface.grid(grd)
 plot(grid)
 labels<-matrix(t(use.data),ncol=1)#transpose matrix and stack rows into 1 column
-text(grid[ ,1],grid[ ,2]+2,labels,cex=0.8) # plot catch data at collection point
+text(grid[ ,1],grid[ ,2],labels,cex=0.8,pos=1) # plot catch data at collection point
 
 ## or plot using function plotss.  Shows test data from 1 lateral with no overlap.
 cdata<-cbind(grid[ ,1],grid[ ,2],labels) #construct required catch can data matrix
-sp.x<-rep(0,3);sp.y<-seq(0,60,30)# sprinkler spacing (y) = 30 ft
+sp.x<-rep(0,3);sp.y<-seq(60,0,-30)# sprinkler spacing (y) = 30 ft, plot top to bottom
 sploc<-cbind(sp.x,sp.y) #construct required sprinkler location matrix
 plotss(cdata,sploc)
 %% maybe str(catchcan) ; plot(catchcan) ...

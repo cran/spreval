@@ -13,7 +13,8 @@ DU.lh(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{a numeric array of catch depths or volumes.
+  \item{x}{a numeric array of catch depths or volumes. Array may include missing (NA) data.
+NA values will be removed in function.
 %%     ~~Describe \code{x} here~~
 }
 }

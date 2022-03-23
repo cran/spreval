@@ -18,7 +18,7 @@ data(catchcan)
 cc.data<-catchcan$lateral
 knitr::kable(cc.data,format="html")
 
-## ----echo=TRUE,results='asis',fig.show='hold',fig.width = 4.5,fig.height = 4.5,fig.cap="Raw catch can data"----
+## ----echo=TRUE,fig.show='hold',fig.width = 4.5,fig.height = 4.5,fig.cap="Raw catch can data, in./hr"----
 x<-seq(-35,25,10) # x=0 is lateral position. 10 x 10 catch can spacing
 y<-seq(55,5,-10)
 grd<-list(x,y) # prepare list for make.surface function [fields]
@@ -28,7 +28,7 @@ cdata<-cbind(grid[ ,1],grid[ ,2],rates) #construct required catch can data matri
 sp.x<-rep(0,3);sp.y<-seq(0,60,30)# sprinkler spacing (y) = 30 ft
 sploc<-cbind(sp.x,sp.y) #construct required sprinkler location matrix
 spr.lab<-c("s4","s5","s6")# labels for sprinklers
-plotss(cdata,sploc,imcol=TRUE,spklab=spr.lab)# call function
+plotss(cdata,sploc,spklab=spr.lab)# call function
 
 ## ---- echo=TRUE---------------------------------------------------------------
 sl<-50 # 50 ft lateral spacing (pass to overlap)
@@ -55,10 +55,9 @@ o.cdata<-cbind(grid[ ,1],grid[ ,2],o.rates) #construct required catch can data m
 sp.x.o<-c(sp.x,rep(50,3));sp.y.o<-c(sp.y,seq(0,60,30))#add second lateral location for overlap
 sploc.o<-cbind(sp.x.o,sp.y.o) #sprinkler location matrix
 
-## ----echo=TRUE,fig.show='hold',fig.width = 4.5,fig.height = 4.5,fig.cap="Overlapped catch can data at 50 ft lateral spacing"----
+## ----echo=TRUE,fig.show='hold',fig.width = 4.5,fig.height = 4.5,fig.cap="Overlapped catch can data rates (in./hr) at 50 ft lateral spacing"----
 spr.lab<-rep(c("s4","s5","s6"),2)# labels for sprinklers
-plotss(o.cdata,sploc.o,imcol=TRUE,spklab=spr.lab)# call function
-
+plotss(o.cdata,sploc.o,spklab=spr.lab)# call function
 
 ## ---- echo=TRUE---------------------------------------------------------------
 lower<-super.r[4:6,];upper<-super.r[1:3,]#use superimposed data

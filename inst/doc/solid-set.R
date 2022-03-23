@@ -13,7 +13,7 @@ data(catchcan)
 cc.data<-catchcan$solid.set
 knitr::kable(cc.data,format="html")
 
-## ----echo=TRUE,results='asis',fig.show='hold',fig.width = 5,fig.height = 5,fig.cap="Raw catch can data"----
+## ----echo=TRUE,results='asis',fig.show='hold',fig.width = 5,fig.height = 5,fig.cap="Raw catch can data, in."----
 #x,y matrix 20 ft x 20 ft catch can spacing
 x<-seq(10,70,20) # catch can x coordinates. 
 y<-seq(-10,-70,-20) #catch can y coordinates. 
@@ -24,7 +24,7 @@ cdata<-cbind(grid[ ,1],grid[ ,2],depths) #construct required catch can data matr
 sp.x<-c(0,0,80,80);sp.y<-c(0,-80,0,-80)# sprinkler spacing 80 x 80 ft
 sploc<-cbind(sp.x,sp.y) #construct required sprinkler location matrix
 spr.lab<-c("s12","s22","s13","s23")# label sprinklers as in reference
-plotss(cdata,sploc,imcol=TRUE,spklab=spr.lab)# call function
+plotss(cdata,sploc,spklab=spr.lab)# call function
 
 ## ---- echo=TRUE,results='asis'------------------------------------------------
 ss.uni<-c(CU(cc.data),DU(cc.data),DU.lh(cc.data),PELQ(cc.data,SI=FALSE,rate=16.98,ss=80,sl=80,dur=2.25))# use U.S. cust. units

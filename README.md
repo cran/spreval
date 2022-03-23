@@ -13,11 +13,13 @@
 The `spreval` package contains a number of functions to assess
 irrigation sprinkler system application uniformity and efficiency. Use
 of the functions allow for assessment of lateral-move, solid-set, and
-hose pull (big gun) irrigation systems.
-
-`spreval::catchcan` is a data file included in this package. Methods
-implemented in this package and data used in the vignettes are taken
-from the references below:
+hose pull (big gun) irrigation systems. Assessment of landscape
+sprinkler irrigation systems may also be done using functions contained
+in the package. The description at the top of the [package’s CRAN
+page](https://CRAN.R-project.org/package=spreval) provides more detail
+and background. `spreval::catchcan` is a data file included in this
+package. Methods implemented in this package and data used in the
+vignettes are taken from the references below:
 
 ## References
 
@@ -43,17 +45,16 @@ Utah. (<https://pdf.usaid.gov/pdf_docs/PNAAG745.pdf>)
 
 ## Installation
 
-You can install the released version of spreval (date TBD) from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of spreval (release data
+2021-07-08) from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("spreval")
 ```
 
-a “pre-CRAN” development package is available at: [package in
-github](https://github.com/glgrabow/spreval/blob/master/packages/spreval_1.0.0.tar.gz)
-This may be installed as an archive file locally on your machine after
-downloading.
+or you may access from the “Links” listing on this page, or navigate to
+the [github repository page](https://github.com/glgrabow/spreval) and
+click under “releases” to download the source code and install locally.
 
 A pdf file documenting all of the package functions is available at:
 [here](https://github.com/glgrabow/spreval/blob/master/docs/spreval.pdf)

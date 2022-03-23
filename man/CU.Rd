@@ -13,7 +13,8 @@ CU(x)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
+  \item{x}{numeric array of catch can data. Array may include missing (NA) data.
+NA values will be removed in function.
 %%     ~~Describe \code{x} here~~
 }
 }

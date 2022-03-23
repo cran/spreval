@@ -1,26 +1,42 @@
 #function to do exploratory data analysis of object array
 #histogram, boxplot, density and quartile plots constructed
 
-"eda.shape" = function(x,title=NULL,qq=TRUE)
+"eda.shape" = function(x,qq=TRUE,main=NULL,xlab,...)
 {
   oldpar<-par(no.readonly = TRUE) #get current plot parameters
   on.exit(par(oldpar))
   par(mfrow = c(2, 2))
-  #extract name of array
-  nm <-deparse(substitute(x))
-  hist(x, xlab = nm, ylab = "no. observations",main=title)
-  boxplot(x, plot = TRUE, notch = TRUE, col = NULL,border=1,
-          staplelty = 1, staplewex = 1,
-          staplehex = 1, outchar = TRUE, outpch = NA, outline = TRUE, outwex
-          = 1, main=title,ylab=nm)
-  iqd <- summary(x)[5] - summary(x)[2]
-  if(is.null(title)){title=""}
-  plot(density(x, width = 2 * iqd, na.rm = TRUE), xlab = nm, ylab = NULL,
-       type = "l",main=title)
-  if(qq){qqnorm(x, main=title,pch = 1)}
+  #extract name of array as default label
+  #ann=FALSE will suppress labels in boxplot
+  nm<- deparse(substitute(x))
+  # to suppress main, x, y label defaults pass ann=FALSE at call
+  if(is.null(main))main=""# to prevent default main titles, explicitly provide null string
+  lhist<-function(...,notch,axes,log,ylab,ylim,cex.label,frame.plot) hist(...)
+  lboxplot<-function(...,axes,log,xlab,xlim,cex.label) boxplot(...)
+  lplot<-function(...,notch,axes,ylab,cex.label,frame.plot) plot(...)
+  lqqnorm<-function(...,notch,xlab,ylab,log,axes,xlim,ylim,cex.label) qqnorm(...)
+  if(missing(xlab))
+    lhist(x,main=main,xlab=nm,...)
+  else
+    lhist(x,main=main,xlab=xlab,...)
+  if(missing(xlab))
+    lboxplot(x, main=main,ylab=nm,plot = TRUE,border=1,
+             staplelty = 1, staplewex = 1,
+             staplehex = 1, outchar = TRUE, outpch = NA, outline = TRUE, outwex
+             = 1,...)
+  else
+    lboxplot(x,main=main,ylab=xlab,plot = TRUE,border=1,
+             staplelty = 1, staplewex = 1,
+             staplehex = 1, outchar = TRUE, outpch = NA, outline = TRUE, outwex
+             = 1,...)
+  iqd <- summary(x)[5] - summary(x)[2] #interquartile range ... not used
+  if(missing(xlab))
+   lplot(density(x,na.rm = TRUE),main=main,xlab=nm,...)
+  else
+    lplot(density(x,na.rm = TRUE),main=main,xlab=xlab,...)
+  if(qq){lqqnorm(x,main=main,...)}
   if(qq){qqline(x)}
   invisible()
-
 }
 
 #function to spit out summary stats, skewness and kurtosis
